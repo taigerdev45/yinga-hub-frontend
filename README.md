@@ -42,21 +42,33 @@
  - **Tests** : Vitest + Testing Library  
  - **Qualité** : ESLint + Prettier + Stylelint + Husky + lint-staged  
  
- ## Structure des dossiers (conventionnelle)          
+ ## 📂 Structure du projet (Feature-First)
+ 
+ ```bash
  src/ 
  ├── assets/               # images, icons, fonts 
- ├── components/           # composants réutilisables 
- ├── features/             # slices métier (auth, questionnaire, dashboard, etc.) 
- │   ├── auth/ 
- │   ├── dashboard/ 
- │   ├── questionnaire/ 
- │   ├── upload/ 
- │   ├── recommendations/ 
- │   └── payments/ 
- ├── hooks/                # hooks custom 
- ├── lib/                  # utils, api client, dexie config 
- ├── pages/                # pages principales (route-based) 
- ├── services/             # logique métier non-UI 
- ├── stores/               # Zustand stores 
- ├── types/                # types TypeScript globaux 
+ ├── components/           # composants réutilisables (Button, Input, etc.)
+ ├── features/             # SLICES MÉTIER (le cœur de l'app)
+ │   ├── auth/             # Login, Register, OTP
+ │   ├── dashboard/        # Vue d'ensemble, notifications
+ │   ├── questionnaire/    # Formulaire financier, étapes
+ │   ├── upload/           # Gestion des documents, drag & drop
+ │   ├── recommendations/  # Algorithme de suggestion, affichage résultats
+ │   └── payments/         # Intégration paiement mobile/carte
+ ├── hooks/                # hooks custom partagés
+ ├── lib/                  # configuration des libs tierces (axios, dexie, i18n)
+ ├── pages/                # assemblage des features pour le routing
+ ├── services/             # logique métier pure (hors React)
+ ├── stores/               # stores globaux (Zustand)
+ ├── types/                # définitions TypeScript globales
  └── App.tsx / main.tsx
+ ```
+ 
+ ## 🌿 Branches actives (Convention de nommage)
+ 
+ - `main`                → **Production** (stable, déployable)
+ - `dev`                 → **Intégration** (toutes les features fusionnées ici)
+ - `feature/edy-landing-auth-dashboard`          → Landing page, Auth, Dashboard
+ - `feature/brady-questionnaire-upload-offline`  → Questionnaire, Upload, Offline mode
+ - `feature/barry-recos-suivi-paiements-chat`    → Recommandations, Suivi, Paiements
+ - `feature/shared-ui-i18n-accessibility`        → Composants UI partagés, i18n, A11y
